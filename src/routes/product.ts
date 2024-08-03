@@ -15,6 +15,21 @@ let products: IProduct[] = [];
  *  /api/products:
  *   get:
  *     summary: Retrieve a list of prodycts
+ *     parameters:
+ *         - name: product_category
+ *           in: query
+ *           required: false
+ *           explode: true
+ *           schema:
+ *             type: string
+ *             default: gems
+ *             enum:
+ *               - Online Puja
+ *               - Gems
+ *               - Kundali
+ *               - Yantra
+ *               - Kundali Matching 
+ 
  *     responses:
  *       200:
  *         description: A list of product
@@ -44,9 +59,12 @@ let products: IProduct[] = [];
  *                product_category:
  *                    type: string
  *                    example: gems
- *                    enum: 
- *                       - onlinePuja
- *                       - gems
+ *                    enum:
+ *                     - onlinePuja
+ *                     - gems
+ *                     - kundali
+ *                     - yantra
+ *                     - kundaliMatching 
  *                  
  *                    
  *  
