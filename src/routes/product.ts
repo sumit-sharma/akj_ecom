@@ -22,7 +22,6 @@ let products: IProduct[] = [];
  *           explode: true
  *           schema:
  *             type: string
- *             default: gems
  *             enum:
  *               - Online Puja
  *               - Gems
