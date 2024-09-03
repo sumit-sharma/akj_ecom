@@ -1,8 +1,11 @@
 import express, { Request, Response } from "express";
+import "reflect-metadata"
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from 'swagger-jsdoc';
 
 import productRoutes from "../src/routes/product";
+import authRoutes from "../src/routes/auth";
+import cartRoutes from "../src/routes/cart";
 import connectDB from "./config/database";
 
 const app = express();
@@ -10,6 +13,7 @@ const port = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB();
+
 
 app.get("/", (req: Request, res: Response) => {
   res.json({ msg: "Hello, TypeScript Express!" });
@@ -34,6 +38,8 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
