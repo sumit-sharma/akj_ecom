@@ -123,4 +123,10 @@ router.put(
   }
 );
 
+router.get("/detail/:productId", async (req: Request, res: Response) => {
+  const product = await Product.findById(req.params.productId);
+  res.json(product);
+});
+
+
 export default router;

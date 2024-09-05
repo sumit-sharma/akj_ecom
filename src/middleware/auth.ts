@@ -16,7 +16,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.header('Authorization')?.replace('Bearer ', '');
         if (!token) {
-            throw new Error();
+            throw new Error("token is required");
         }
         const decoded = jwt.verify(token, SECRET_KEY) as CustomRequest;
         // (req as CustomRequest).token = decoded;
@@ -34,9 +34,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
                 "id": res.locals.uid
             }
         })
-        console.log("valid_token", validToken);
         if(validToken === null) {
-            console.log("invalid token");
             return res.status(401).json({"status": "error", "message":"invalid token"});
         }else if(validToken.revoked === true){
             return res.status(401).json({"status": "error", "message":"invalid token"});

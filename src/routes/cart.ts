@@ -31,6 +31,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
     // product_category: req.params.product_category
     try {
         const { user_id, product_uid, variety, price, quantity, additional_remark } = await req.body;
+
       const cartField: TCart = {
         user_id: res.locals.user_id,
         product_uid: product_uid,
